@@ -117,7 +117,7 @@ const projects = [
     desc: "A collaborative-filtering recommendation bot using the MovieLens dataset. Scaled to handle 300+ concurrent users, with real-time interaction metrics tracked via an integrated Power BI dashboard.",
     status: "Live Dashboard",
     color: "from-blue-900 to-indigo-950",
-    dashboardUrl: "PASTE_YOUR_POWER_BI_URL_HERE" // Paste your link here!
+    dashboardUrl: "/dashboard.png" // Paste your link here!
   },
   {
     title: "Project in the Works",
@@ -622,13 +622,13 @@ const LiveTelemetrySection = () => {
     return (
         <section className="relative z-30 bg-neutral-950 py-24 px-6 border-t border-white/5">
             <div className="max-w-6xl mx-auto">
-                <SectionTitle number="04" title="System Telemetry" center />
+                <SectionTitle number="04" title="Recent Project/ Discord Recommendation System" center />
                 <p className="text-center text-neutral-400 mb-12 max-w-2xl mx-auto">
                     Real-time metrics tracking the usage and uptime of my deployed infrastructure and backend architecture.
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <AnimatedCounter value={users} label="Concurrent Users" />
-                    <AnimatedCounter value={prompts} label="Queries Processed" />
+                    <AnimatedCounter value={prompts} label="Number of Queries" />
                     <AnimatedCounter value={hours} label="Hours of Uptime" suffix="+" />
                 </div>
             </div>
