@@ -22,7 +22,6 @@
 
 # misc
 .DS_Store
-*.pem
 
 # debug
 npm-debug.log*
@@ -30,8 +29,17 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# env files — keep .env.example committed as documentation only
+.env
+.env.*
+!.env.example
+
+# local secrets / credentials that must never be committed
+*.pem
+*.key
+*.p12
+credentials.json
+service-account*.json
 
 # vercel
 .vercel
