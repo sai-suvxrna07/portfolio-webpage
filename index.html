@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sai Ram Suvarna | Portfolio</title>
+  <meta name="description" content="Sai Ram Suvarna — CS @ University of Toronto. Ships enterprise backends, IoT products, and AI tools. Open to internship conversations." />
+  <meta name="theme-color" content="#0B0D10" />
+  <link rel="icon" type="image/svg+xml" href="./assets/img/favicon.svg" />
+  <link rel="preload" as="image" href="./assets/video/hero-orbit-poster.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600&family=Syne:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <header class="site-header" id="top">
+    <nav class="nav" aria-label="Primary">
+      <a class="nav-mark" href="#hero">SR.</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#mission" data-section="mission">Mission</a></li>
+        <li><a href="#pillars" data-section="pillars">Focus</a></li>
+        <li><a href="#story" data-section="story">Path</a></li>
+        <li><a href="#work" data-section="work">Work</a></li>
+        <li><a href="#connect" data-section="connect" class="nav-connect">Connect</a></li>
+      </ul>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- 1. Hero -->
+    <section class="hero" id="hero" aria-label="Hero">
+      <div class="hero-media" aria-hidden="true">
+        <video
+          id="hero-video"
+          class="scrub-video"
+          muted
+          playsinline
+          preload="metadata"
+          poster="./assets/video/hero-orbit-poster.jpg"
+          data-src="./assets/video/hero-orbit.mp4"
+        >
+          <source src="./assets/video/hero-orbit.mp4" type="video/mp4" />
+        </video>
+        <div class="hero-scrim"></div>
+      </div>
+      <div class="hero-content">
+        <p class="hero-mark reveal-load">SR.</p>
+        <h1 class="hero-name reveal-load">Sai Ram Suvarna</h1>
+        <p class="hero-support reveal-load">
+          CS @ University of Toronto. I ship software people use — from enterprise backends to IoT products — and help students build with me.
+        </p>
+        <div class="hero-ctas reveal-load">
+          <a class="btn btn-primary" href="mailto:sairamsuvarna07@gmail.com">Email Sai</a>
+          <a class="btn btn-secondary" href="#work">View work</a>
+          <div class="hero-tertiary">
+            <a href="https://www.linkedin.com/in/sai-ram-suvarna-379073369" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <span aria-hidden="true">·</span>
+            <a href="https://github.com/sai-suvxrna07" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
+        </div>
+        <p class="hero-micro reveal-load">Formerly SWE Intern @ Cencora · Open to internship conversations</p>
+      </div>
+    </section>
+
+    <!-- 2. Stats -->
+    <section class="stats" id="stats" aria-label="Proof">
+      <div class="stats-row">
+        <div class="stat">
+          <span class="stat-num" data-count="2" data-suffix="×">0×</span>
+          <span class="stat-label">Hackathon wins</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-count="100" data-suffix="+">0+</span>
+          <span class="stat-label">Students mentored</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-count="300" data-suffix="+">0+</span>
+          <span class="stat-label">Concurrent users on Discord bot</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-count="1" data-suffix="">0</span>
+          <span class="stat-label">IoT app on Google Play</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num stat-text">Apr–Sept ’25</span>
+          <span class="stat-label">SWE Intern @ Cencora</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Mission -->
+    <section class="section mission" id="mission">
+      <div class="section-inner">
+        <p class="eyebrow reveal">Mission</p>
+        <h2 class="section-title reveal">Build systems that hold up — and people who can ship them.</h2>
+        <p class="section-body reveal">
+          I’m a Computer Science student at the University of Toronto, curious about how complex systems are architected end to end. That curiosity shows up in enterprise backends at Cencora, in IoT and AI projects that leave the lab, and in hackathons I organize so hundreds of peers can ship under real deadlines.
+        </p>
+        <dl class="signals reveal">
+          <div>
+            <dt>Education</dt>
+            <dd>BSc Computer Science, University of Toronto · Class of 2029</dd>
+          </div>
+          <div>
+            <dt>Credential</dt>
+            <dd>AI/ML with Python · Circuit Stream (Pandas, PyTorch, TensorFlow, Gemini API)</dd>
+          </div>
+          <div>
+            <dt>Now</dt>
+            <dd>Snowboarding Instructor, Conservation Halton (Dec 2025–Present)</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- 4. Pillars -->
+    <section class="section pillars" id="pillars">
+      <div class="section-inner">
+        <p class="eyebrow reveal">Focus</p>
+        <h2 class="section-title reveal">Three things I keep proving.</h2>
+        <div class="pillar-grid">
+          <article class="pillar reveal">
+            <span class="pillar-idx">01</span>
+            <h3><a href="#work">Ship products</a></h3>
+            <p>IoT Smart Plant Monitor on Google Play; Discord recommender scaled to 300+ concurrent users</p>
+          </article>
+          <article class="pillar reveal">
+            <span class="pillar-idx">02</span>
+            <h3>Engineer systems</h3>
+            <p>SWE Intern @ Cencora — ASP.NET, Salesforce security, CI/CD, peer review</p>
+          </article>
+          <article class="pillar reveal">
+            <span class="pillar-idx">03</span>
+            <h3>Grow builders</h3>
+            <p>Mill Hacks organizer; 100+ students mentored; club leadership</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Story -->
+    <section class="section story" id="story">
+      <div class="section-inner story-grid">
+        <div class="story-copy">
+          <p class="eyebrow reveal">Path</p>
+          <h2 class="section-title reveal">From tutoring desks to production pipelines.</h2>
+          <p class="section-body reveal">
+            I started by teaching — Kumon TA and Milton Library programs — learning how to explain hard ideas clearly. That turned into organizing Mill Hacks and leading CS club events where students ship under pressure. At Cencora I co-built backend features in ASP.NET, lived in CI/CD (TFVC + Git), hardened Salesforce/AppOmni security, and practiced the discipline of review and smoke tests. In parallel I ship personal systems: an MQTT plant monitor on Android, and a MovieLens collaborative-filtering Discord bot with Power BI analytics. I’m still a student (UofT CS, 2029) — and I treat every project like it has users.
+          </p>
+          <div class="story-photo reveal">
+            <img src="./assets/img/sai-headshot.png" alt="Portrait of Sai Ram Suvarna" width="800" height="800" loading="lazy" />
+          </div>
+        </div>
+        <ol class="experience reveal">
+          <li class="exp lead">
+            <div class="exp-head">
+              <h3>Cencora — Software Engineer Intern</h3>
+              <time>Apr 2025 – Sept 2025</time>
+            </div>
+            <ul>
+              <li>Co-built backend features in ASP.NET for production systems</li>
+              <li>Worked CI/CD with TFVC + Git; peer review and smoke tests</li>
+              <li>Hardened Salesforce / AppOmni security posture</li>
+              <li>Collaborated across engineering on delivery discipline</li>
+            </ul>
+          </li>
+          <li class="exp lead">
+            <div class="exp-head">
+              <h3>Mill Hacks — Event Organizer</h3>
+              <time>Nov 2024 – Present</time>
+            </div>
+            <ul>
+              <li>Owned the school’s first hackathon end-to-end</li>
+              <li>Mentored students on OOP/DSA across multiple languages</li>
+            </ul>
+          </li>
+          <li class="exp">
+            <div class="exp-head">
+              <h3>Conservation Halton — Snowboarding Instructor</h3>
+              <time>Dec 2025 – Present</time>
+            </div>
+            <ul>
+              <li>Leadership and teaching on the hill</li>
+            </ul>
+          </li>
+          <li class="exp collapsed">
+            <details>
+              <summary>
+                <span class="exp-summary-title">Milton Library — Student Page</span>
+                <time>Jul 2023 – Apr 2025</time>
+              </summary>
+              <ul>
+                <li>Ran programs including Coding Critters and TED Talks</li>
+              </ul>
+            </details>
+          </li>
+          <li class="exp collapsed">
+            <details>
+              <summary>
+                <span class="exp-summary-title">Kumon — Teaching Assistant</span>
+                <time>Oct 2022 – Sept 2023</time>
+              </summary>
+              <ul>
+                <li>Tutored students and explained hard ideas clearly</li>
+              </ul>
+            </details>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 6. Builder -->
+    <section class="builder" id="builder" aria-label="The Builder">
+      <div class="builder-media" aria-hidden="true">
+        <video
+          id="builder-video"
+          class="scrub-video"
+          muted
+          playsinline
+          preload="none"
+          poster="./assets/video/the-builder-poster.jpg"
+        >
+          <source src="./assets/video/the-builder.mp4" type="video/mp4" />
+        </video>
+        <div class="builder-scrim"></div>
+      </div>
+      <div class="builder-content">
+        <h2 class="section-title reveal">Late nights. Real systems. Quiet intensity.</h2>
+        <p class="section-body reveal">
+          I design and ship the stack end to end — sensors to mobile, bots to dashboards, intern code to pipelines. The work is less about demos and more about things that stay up when someone else is depending on them.
+        </p>
+        <ul class="micro-proofs reveal">
+          <li><strong>Discord Movie Recommender &amp; Analytics</strong> — Python, SQLite, Power BI</li>
+          <li><strong>IoT Smart Plant Monitor</strong> — Android / Java, ESP8266, MQTT</li>
+          <li><strong>Enterprise delivery</strong> — .NET, Salesforce, DevOps discipline at Cencora</li>
+        </ul>
+        <p class="builder-bridge reveal">
+          Through Mill Hacks and mentoring, that same bar gets handed to the next person in the room.
+        </p>
+      </div>
+    </section>
+
+    <!-- 7. Featured work -->
+    <section class="section work" id="work">
+      <div class="section-inner">
+        <p class="eyebrow reveal">Work</p>
+        <h2 class="section-title reveal">Selected systems.</h2>
+        <div class="work-list">
+          <article class="work-item reveal">
+            <div class="work-visual">
+              <img src="./assets/img/discord-analytics.jpg" alt="Power BI analytics dashboard for Discord movie recommender" loading="lazy" width="1400" height="900" />
+            </div>
+            <div class="work-meta">
+              <h3>Discord Movie Recommender &amp; Analytics</h3>
+              <p class="stack">Python · SQLite · Power BI</p>
+              <p>Collaborative filtering on MovieLens; scaled to 300+ concurrent users; analytics via Power BI.</p>
+              <a class="work-link" href="./assets/img/discord-analytics.jpg" target="_blank" rel="noopener noreferrer">View analytics</a>
+            </div>
+          </article>
+          <article class="work-item reveal">
+            <div class="work-visual work-visual-plain">
+              <span class="work-placeholder-label">IoT · MQTT · Android</span>
+            </div>
+            <div class="work-meta">
+              <h3>IoT Smart Plant Monitor</h3>
+              <p class="stack">Android (Java) · ESP8266 · MQTT</p>
+              <p>End-to-end IoT — sensors to cloud to real-time soil/light visualization. Published on Google Play Store.</p>
+              <p class="work-status">Google Play — link pending confirmation</p>
+            </div>
+          </article>
+          <article class="work-item reveal">
+            <div class="work-visual work-visual-plain">
+              <img class="work-poster-thumb" src="./assets/video/the-clubhouse-poster.jpg" alt="" loading="lazy" width="960" height="540" />
+            </div>
+            <div class="work-meta">
+              <h3>Mill Hacks / Community infrastructure</h3>
+              <p class="stack">Event systems · Mentoring · Git collaboration</p>
+              <p>School’s first hackathon owned end-to-end; problem statements, judging, mentoring on OOP/DSA across Python, Java, C++, JS, SQL, .NET.</p>
+            </div>
+          </article>
+        </div>
+        <p class="skills-footer reveal">
+          <span class="skills-label">Languages</span> Python, Java, C++, JavaScript, TypeScript, C#, HTML/CSS, SQL
+          <span class="skills-sep" aria-hidden="true">·</span>
+          <span class="skills-label">Frameworks</span> React, Next.js, Node, .NET, Docker, Salesforce
+          <span class="skills-sep" aria-hidden="true">·</span>
+          <span class="skills-label">AI/Data</span> Pandas, NumPy, PyTorch, ML fundamentals
+        </p>
+      </div>
+    </section>
+
+    <!-- 8. Final CTA -->
+    <section class="connect" id="connect" aria-label="Connect">
+      <div class="connect-media" aria-hidden="true">
+        <video
+          id="connect-video"
+          class="scrub-video"
+          muted
+          playsinline
+          preload="none"
+          poster="./assets/video/the-clubhouse-poster.jpg"
+        >
+          <source src="./assets/video/the-clubhouse.mp4" type="video/mp4" />
+        </video>
+        <div class="connect-scrim"></div>
+      </div>
+      <div class="connect-content">
+        <h2 class="section-title reveal">Let’s build something that ships.</h2>
+        <p class="section-body reveal">
+          Open to internship conversations, collaborations, and student builders who want a high bar.
+        </p>
+        <a class="btn btn-primary btn-large reveal" href="mailto:sairamsuvarna07@gmail.com">sairamsuvarna07@gmail.com</a>
+        <div class="connect-socials reveal">
+          <a href="https://www.linkedin.com/in/sai-ram-suvarna-379073369" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://github.com/sai-suvxrna07" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65S9 17.58 9 18v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+            GitHub
+          </a>
+          <a href="https://instagram.com/sai_suvxrna07" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            Instagram
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <span class="nav-mark">SR.</span>
+        <span>© 2026 Sai Ram Suvarna</span>
+      </div>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="#hero">Home</a>
+        <a href="#work">Work</a>
+        <a href="#connect">Connect</a>
+        <a href="mailto:sairamsuvarna07@gmail.com">Email</a>
+      </nav>
+      <div class="footer-socials">
+        <a href="https://www.linkedin.com/in/sai-ram-suvarna-379073369" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">LinkedIn</a>
+        <a href="https://github.com/sai-suvxrna07" target="_blank" rel="noopener noreferrer" aria-label="GitHub">GitHub</a>
+        <a href="https://instagram.com/sai_suvxrna07" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
+      </div>
+    </div>
+    <p class="footer-note">Designed as a static cinematic portfolio · Deployed on Vercel</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" defer></script>
+  <script src="./script.js" defer></script>
+</body>
+</html>
