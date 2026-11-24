@@ -3,10 +3,15 @@
 import React, { useState, useEffect, useRef } from "react";
 // FIXED: Added useInView to imports
 import { motion, useScroll, useTransform, useSpring, useInView, AnimatePresence } from "framer-motion";
-import { Github, Linkedin, ArrowDown, Send, ExternalLink, Code as CodeIcon, BookOpen, Database, Terminal, Instagram, Building2, Snowflake, Library, GraduationCap, Shield, Globe, Award, Cpu, CheckCircle2 } from "lucide-react";
+import { Github, Linkedin, ArrowDown, Send, ExternalLink, Code as CodeIcon, BookOpen, Database, Terminal, Instagram, Snowflake, Library, GraduationCap, Shield, Globe, Award, CheckCircle2 } from "lucide-react";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import Lenis from 'lenis';
-import Image from "next/image";
+import {
+  sanitizeFeedText,
+  FEED_MAX_LENGTH,
+  FEED_COOLDOWN_MS,
+  FEED_MAX_ITEMS,
+} from "@/lib/sanitize";
 
 // --- Fonts ---
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], weight: ["700"] });
@@ -392,12 +397,7 @@ const BentoGridSection = () => {
                     {/* AI/ML Certification */}
                     <div className="p-8 bg-gradient-to-br from-neutral-900 to-neutral-800 border border-white/10 rounded-3xl relative overflow-hidden flex flex-col justify-between group">
                         <div className="absolute top-0 right-0 p-4 opacity-20">
-                            {/* Circuit Stream Logo via Google Favicon */}
-                            <img 
-                                src="https://www.google.com/s2/favicons?domain=circuitstream.com&sz=128" 
-                                alt="Circuit Stream" 
-                                className="w-16 h-16 opacity-50 grayscale group-hover:grayscale-0 transition-all"
-                            />
+                            <Award className="w-16 h-16 text-yellow-500/40" aria-hidden />
                         </div>
                         <div>
                             <div className="flex items-center gap-2 mb-2">
@@ -712,15 +712,32 @@ const ProjectCard = ({ project, index }: any) => {
 
 const LiveFeedSection = () => {
     const [comments, setComments] = useState([
-        { user: "Alex Chen", text: "Impressive portfolio! The parallax effects are top-notch.", time: "2m ago" },
-        { user: "Sarah J.", text: "Love the IoT project realization. Very clean implementation.", time: "1h ago" },
+        { id: "seed-1", user: "Alex Chen", text: "Impressive portfolio! The parallax effects are top-notch.", time: "2m ago" },
+        { id: "seed-2", user: "Sarah J.", text: "Love the IoT project realization. Very clean implementation.", time: "1h ago" },
     ]);
     const [input, setInput] = useState("");
+    const [rateLimited, setRateLimited] = useState(false);
+    const lastPostAt = useRef(0);
     
     const handlePost = (e: React.FormEvent) => {
         e.preventDefault();
-        if(!input.trim()) return;
-        setComments([{ user: "Visitor", text: input, time: "Just now" }, ...comments]);
+        const cleaned = sanitizeFeedText(input);
+        if (!cleaned) return;
+
+        const now = Date.now();
+        if (now - lastPostAt.current < FEED_COOLDOWN_MS) {
+            setRateLimited(true);
+            return;
+        }
+
+        lastPostAt.current = now;
+        setRateLimited(false);
+        setComments((prev) =>
+            [
+                { id: `local-${now}`, user: "Visitor", text: cleaned, time: "Just now" },
+                ...prev,
+            ].slice(0, FEED_MAX_ITEMS)
+        );
         setInput("");
     };
 
@@ -728,23 +745,36 @@ const LiveFeedSection = () => {
         <section className="relative z-30 bg-neutral-950 py-32 px-6 border-t border-white/5">
              <div className="max-w-3xl mx-auto">
                 <SectionTitle number="05" title="Live Feed" center />
-                <form onSubmit={handlePost} className="relative mb-12">
+                <form onSubmit={handlePost} className="relative mb-12" autoComplete="off">
+                    <label htmlFor="live-feed-input" className="sr-only">
+                        Share your thoughts
+                    </label>
                     <input 
+                        id="live-feed-input"
                         type="text" 
                         value={input}
-                        onChange={(e) => setInput(e.target.value)}
+                        maxLength={FEED_MAX_LENGTH}
+                        onChange={(e) => {
+                            setRateLimited(false);
+                            setInput(e.target.value.slice(0, FEED_MAX_LENGTH));
+                        }}
                         placeholder="Share your thoughts..."
                         className="w-full bg-neutral-900 rounded-full border border-neutral-800 py-4 pl-8 pr-16 text-white placeholder:text-neutral-600 focus:outline-none focus:border-purple-500 transition-colors"
                     />
-                    <button type="submit" className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-purple-600 text-white rounded-full hover:bg-purple-500 transition-colors disabled:opacity-50" disabled={!input.trim()}>
+                    <button type="submit" className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-purple-600 text-white rounded-full hover:bg-purple-500 transition-colors disabled:opacity-50" disabled={!sanitizeFeedText(input)}>
                         <Send size={18} />
                     </button>
                 </form>
+                {rateLimited && (
+                    <p className="text-sm text-amber-400/90 -mt-8 mb-8 text-center" role="status">
+                        Please wait a few seconds before posting again.
+                    </p>
+                )}
                 <div className="space-y-6 relative">
                      <div className="absolute left-6 top-0 bottom-0 w-px bg-neutral-800 z-0"></div>
                     <AnimatePresence>
-                        {comments.map((comment, i) => (
-                            <motion.div key={i} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="relative z-10 flex gap-4">
+                        {comments.map((comment) => (
+                            <motion.div key={comment.id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="relative z-10 flex gap-4">
                                 <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-purple-600 to-blue-600 flex items-center justify-center text-lg font-bold border-2 border-neutral-950 shrink-0">
                                     {comment.user.charAt(0)}
                                 </div>
@@ -753,6 +783,7 @@ const LiveFeedSection = () => {
                                         <h4 className="font-bold text-white">{comment.user}</h4>
                                         <span className="text-xs text-neutral-500">{comment.time}</span>
                                     </div>
+                                    {/* Text content is rendered as React children (escaped); never dangerouslySetInnerHTML */}
                                     <p className="text-neutral-300 leading-relaxed">{comment.text}</p>
                                 </div>
                             </motion.div>
@@ -792,9 +823,9 @@ const DedicatedFooter = () => (
 
     <div className="max-w-6xl mx-auto pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-sm text-neutral-500">
         <div className="flex gap-6 mb-4 md:mb-0">
-            <a href={personalInfo.github} target="_blank" className="hover:text-white transition-colors">GitHub</a>
-            <a href={personalInfo.linkedin} target="_blank" className="hover:text-white transition-colors">LinkedIn</a>
-            <a href={personalInfo.instagram} target="_blank" className="hover:text-white transition-colors">Instagram</a>
+            <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">GitHub</a>
+            <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">LinkedIn</a>
+            <a href={personalInfo.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Instagram</a>
         </div>
         <p>© {new Date().getFullYear()} Sai Ram Suvarna. Crafted with Next.js & Framer Motion.</p>
     </div>
@@ -809,7 +840,7 @@ const SectionTitle = ({ number, title, center }: any) => (
 )
 
 const SocialBtn = ({ icon, href }: { icon: React.ReactNode, href: string }) => (
-  <a href={href} target="_blank" className="p-4 bg-white/5 rounded-full hover:bg-white/10 hover:scale-110 hover:border-purple-500/50 transition-all border border-white/10 text-white">
+  <a href={href} target="_blank" rel="noopener noreferrer" className="p-4 bg-white/5 rounded-full hover:bg-white/10 hover:scale-110 hover:border-purple-500/50 transition-all border border-white/10 text-white">
     {icon}
   </a>
 );
