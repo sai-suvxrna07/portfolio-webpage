@@ -285,8 +285,10 @@
       "#hero",
       ScrollTrigger,
       {
-        end: isMobile ? "+=80%" : "+=120%",
-        pin: true,
+        // Mobile uses stacked portrait+copy; avoid long pin over type
+        end: isMobile ? "bottom top" : "+=120%",
+        pin: !isMobile,
+        start: isMobile ? "top top" : "top top",
       }
     );
 
